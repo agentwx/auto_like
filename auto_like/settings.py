@@ -1,18 +1,24 @@
 #! /usr/bin/env python
 
 
-#用户帐号
-USERNAME = 'hexdanmu@sina.com'
-#密码
-PASSWORD = 'jjYYl3230958823'
+#要使用实现操作的浏览器
+BROWSER = 'Chrome'
+
+#用户帐号及密码, 设置后会自动输入, 但是还是需要自己输入验证码登录
+#USERNAME =
+#PASSWORD =
+
+
 #要点赞评论的链接地址
 URLS = [
         'https://weibo.com/2656274875/GwPZEjBNX?filter=hot&root_comment_id=0&type=comment#_rnd1535501553693',
         ]
+
 #自动发言内容
 CONTENT = '互赞互粉[互粉]互粉[互粉]双倍回赞你有意的内容，不粉也来点个赞叭(回粉可能会迟到, 记得私信给我一下噢)'
+
 #微博群链接地址
-CHATGROUPURL = [
+CHATGROUPURLS = [
         'https://weibo.com/message/history?gid=4075181117196353&name=%E6%96%B0%E6%B5%AA%E4%BA%92%E8%B5%9E%E4%BA%92%E7%B2%894%E4%BA%92%E7%B2%89%E7%BE%A4&type=2',
         'https://weibo.com/message/history?gid=4075182799395477&name=%E6%96%B0%E6%B5%AA%E4%BA%92%E8%B5%9E%E4%BA%92%E7%B2%895%E4%BA%92%E7%B2%89%E7%BE%A4&type=2',
         'https://weibo.com/message/history?gid=3972213377637760&name=%E6%96%B0%E6%B5%AA%E4%BA%92%E7%B2%89%E4%BA%92%E8%B5%9E%EF%BC%883%EF%BC%89&type=2',

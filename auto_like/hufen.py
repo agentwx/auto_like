@@ -4,7 +4,6 @@
 import time
 from itertools import cycle
 
-from selenium import webdriver
 from selenium.common import exceptions
 
 import settings
@@ -24,7 +23,7 @@ class Hufen:
             d.find_element_by_xpath('//textarea').send_keys(self.content)
             time.sleep(2)
             d.find_element_by_xpath('//a[@node-type="submit"]').click()
-        except exceptions.NoSuchElementException:
+        except Exception:
             time.sleep(10)
             self.sendContent(url)
         return self
@@ -33,7 +32,7 @@ class Hufen:
     def start(self):
         self.driver = self.al.browserOpen().driver
         self.al.login(self.driver)
-        for groupurl in cycle(settings.CHATGROUPURL):
+        for groupurl in cycle(settings.CHATGROUPURLS):
             self.sendContent(groupurl)
             time.sleep(5)
 

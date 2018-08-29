@@ -12,7 +12,7 @@ import settings
 class AutoLike:
 
     def browserOpen(self):
-        self.driver = webdriver.Chrome()
+        self.driver = eval('webdriver.%s()' % settings.BROWSER)
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         return self
@@ -21,11 +21,12 @@ class AutoLike:
     def login(self, driver):
         d = driver
         d.get('https://weibo.com/login.php')
-        try:
-            d.find_element_by_id('loginname').send_keys(settings.USERNAME)
-            d.find_element_by_xpath('//input[@type="password"]').send_keys(settings.PASSWORD)
-        except exceptions.StaleElementReferenceException:
-            pass
+        if hasattr(settings, 'USERNAME') and hasattr(settings, 'PASSWORD'):
+            try:
+                d.find_element_by_id('loginname').send_keys(settings.USERNAME)
+                d.find_element_by_xpath('//input[@type="password"]').send_keys(settings.PASSWORD)
+            except exceptions.StaleElementReferenceException:
+                pass
         d.execute_script('alert("请手动登录");')
         alt = d.switch_to.alert
         time.sleep(2)
