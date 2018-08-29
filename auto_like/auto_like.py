@@ -10,18 +10,16 @@ import settings
 
 
 class AutoLike:
-    def __init__(self):
-        ...
-
 
     def browserOpen(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
+        return self
 
 
-    def login(self):
-        d = self.driver
+    def login(self, driver):
+        d = driver
         d.get('https://weibo.com/login.php')
         try:
             d.find_element_by_id('loginname').send_keys(settings.USERNAME)
@@ -45,6 +43,7 @@ class AutoLike:
                 time.sleep(0.5)
 
         print('login successful')
+        return self
 
 
     def clickLike(self, url):
@@ -68,7 +67,7 @@ class AutoLike:
 
     def start(self):
         self.browserOpen()
-        self.login()
+        self.login(self.driver)
         for w in settings.URLS:
             self.clickLike(w)
 
